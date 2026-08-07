@@ -1,0 +1,809 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>S. Sanjay — Electronics &amp; Communication Engineer</title>
+<meta name="description" content="Portfolio of S. Sanjay, Electronics and Communication Engineering student specializing in embedded systems and IoT.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@200;300;400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --navy-950:#060f22;
+    --navy-900:#0b1d3a;
+    --navy-800:#12294f;
+    --navy-700:#1c3b6b;
+    --blue-500:#2e6fb8;
+    --blue-300:#7fb4e8;
+    --ice:#eef3f9;
+    --white:#ffffff;
+    --line:rgba(255,255,255,0.14);
+    --line-soft:rgba(11,29,58,0.12);
+    --ink:#0b1d3a;
+    --ink-soft:#48587a;
+    --radius:2px;
+    --maxw:1120px;
+    font-size:16px;
+  }
+
+  *{margin:0;padding:0;box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+
+  body{
+    font-family:'Manrope',system-ui,sans-serif;
+    background:var(--white);
+    color:var(--ink);
+    line-height:1.6;
+    -webkit-font-smoothing:antialiased;
+  }
+
+  a{color:inherit;text-decoration:none;}
+  ul{list-style:none;}
+  img{max-width:100%;display:block;}
+
+  .wrap{
+    max-width:var(--maxw);
+    margin:0 auto;
+    padding:0 32px;
+  }
+
+  /* ---------- Circuit motif (signature element) ---------- */
+  .circuit-bg{
+    position:absolute; inset:0;
+    overflow:hidden;
+    pointer-events:none;
+  }
+  .circuit-bg svg{position:absolute; top:0; left:0; width:100%; height:100%;}
+  .node{fill:var(--blue-300); opacity:0.9;}
+  .trace{stroke:var(--blue-300); stroke-width:1; opacity:0.28; fill:none;}
+  .trace-dim{stroke:var(--blue-300); stroke-width:1; opacity:0.14; fill:none;}
+
+  /* ---------- Nav ---------- */
+  header.nav{
+    position:sticky; top:0; z-index:100;
+    background:rgba(6,15,34,0.92);
+    backdrop-filter:blur(10px);
+    border-bottom:1px solid var(--line);
+  }
+  .nav-inner{
+    max-width:var(--maxw);
+    margin:0 auto;
+    padding:18px 32px;
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    color:var(--white);
+  }
+  .brand{
+    font-weight:700;
+    font-size:1.05rem;
+    letter-spacing:0.02em;
+    color:var(--white);
+    display:flex; align-items:center; gap:10px;
+  }
+  .brand-mark{
+    width:9px; height:9px; border-radius:50%;
+    background:var(--blue-300);
+    box-shadow:0 0 0 3px rgba(127,180,232,0.18);
+  }
+  nav.links{display:flex; gap:34px;}
+  nav.links a{
+    font-size:0.86rem;
+    font-weight:500;
+    color:rgba(255,255,255,0.72);
+    letter-spacing:0.02em;
+    transition:color .2s ease;
+    position:relative;
+  }
+  nav.links a:hover, nav.links a:focus-visible{color:var(--white);}
+  .nav-toggle{
+    display:none;
+    background:none; border:0; cursor:pointer;
+    width:28px; height:20px; position:relative;
+  }
+  .nav-toggle span{
+    position:absolute; left:0; width:100%; height:2px; background:var(--white);
+    transition:all .25s ease;
+  }
+  .nav-toggle span:nth-child(1){top:0;}
+  .nav-toggle span:nth-child(2){top:9px;}
+  .nav-toggle span:nth-child(3){top:18px;}
+
+  /* ---------- Hero ---------- */
+  .hero{
+    position:relative;
+    background:linear-gradient(180deg,var(--navy-950) 0%, var(--navy-900) 60%, var(--navy-800) 100%);
+    color:var(--white);
+    padding:96px 0 108px;
+    overflow:hidden;
+  }
+  .hero-inner{position:relative; z-index:2;}
+  .eyebrow{
+    display:inline-flex; align-items:center; gap:10px;
+    font-size:0.78rem; font-weight:600; letter-spacing:0.14em; text-transform:uppercase;
+    color:var(--blue-300);
+    margin-bottom:26px;
+  }
+  .eyebrow::before{content:''; width:28px; height:1px; background:var(--blue-300);}
+  .hero h1{
+    font-size:clamp(2.4rem, 5.4vw, 4.2rem);
+    font-weight:800;
+    letter-spacing:-0.02em;
+    line-height:1.05;
+    max-width:820px;
+  }
+  .hero h1 span{color:var(--blue-300);}
+  .hero-role{
+    margin-top:22px;
+    font-size:clamp(1.05rem,1.6vw,1.3rem);
+    font-weight:400;
+    color:rgba(255,255,255,0.82);
+    max-width:640px;
+  }
+  .hero-desc{
+    margin-top:20px;
+    font-size:1rem;
+    color:rgba(255,255,255,0.62);
+    max-width:600px;
+    line-height:1.75;
+  }
+  .hero-actions{
+    margin-top:44px;
+    display:flex;
+    flex-wrap:wrap;
+    gap:14px;
+  }
+  .btn{
+    display:inline-flex; align-items:center; gap:10px;
+    padding:14px 26px;
+    font-family:inherit;
+    font-size:0.88rem;
+    font-weight:600;
+    letter-spacing:0.01em;
+    border-radius:var(--radius);
+    border:1px solid transparent;
+    cursor:pointer;
+    transition:transform .18s ease, background .18s ease, border-color .18s ease, color .18s ease;
+  }
+  .btn:active{transform:translateY(1px);}
+  .btn-primary{
+    background:var(--white); color:var(--navy-900);
+  }
+  .btn-primary:hover{background:var(--blue-300); color:var(--navy-950);}
+  .btn-outline{
+    background:transparent; color:var(--white); border-color:rgba(255,255,255,0.34);
+  }
+  .btn-outline:hover{border-color:var(--white); background:rgba(255,255,255,0.06);}
+  .btn svg{width:16px; height:16px; flex-shrink:0;}
+
+  .hero-meta{
+    margin-top:56px;
+    display:flex; flex-wrap:wrap; gap:36px;
+    padding-top:30px;
+    border-top:1px solid var(--line);
+    color:rgba(255,255,255,0.5);
+    font-size:0.82rem;
+  }
+  .hero-meta strong{display:block; color:var(--white); font-size:0.95rem; font-weight:700; margin-bottom:4px;}
+
+  /* ---------- Section shell ---------- */
+  section{padding:96px 0;}
+  section.alt{background:var(--ice);}
+  .section-head{
+    display:flex; align-items:baseline; gap:18px;
+    margin-bottom:52px;
+  }
+  .section-num{
+    font-size:0.78rem; font-weight:700; color:var(--blue-500); letter-spacing:0.08em;
+  }
+  .section-head h2{
+    font-size:clamp(1.6rem,2.6vw,2.1rem);
+    font-weight:800;
+    letter-spacing:-0.01em;
+    color:var(--navy-900);
+  }
+  .section-head::after{
+    content:''; flex:1; height:1px; background:var(--line-soft);
+  }
+  .section-intro{
+    max-width:640px;
+    color:var(--ink-soft);
+    font-size:0.98rem;
+    margin-bottom:44px;
+    margin-top:-28px;
+  }
+
+  /* ---------- About / objective ---------- */
+  .about-grid{
+    display:grid;
+    grid-template-columns:1.1fr 0.9fr;
+    gap:64px;
+    align-items:start;
+  }
+  .about-text p{color:var(--ink-soft); font-size:1.02rem; margin-bottom:18px;}
+  .trait-list{display:flex; flex-direction:column; gap:0;}
+  .trait-list li{
+    display:flex; align-items:flex-start; gap:14px;
+    padding:16px 0;
+    border-bottom:1px solid var(--line-soft);
+    font-size:0.95rem;
+    color:var(--ink);
+  }
+  .trait-list li:first-child{padding-top:0;}
+  .trait-list li::before{
+    content:''; width:6px; height:6px; margin-top:8px; flex-shrink:0;
+    background:var(--blue-500); border-radius:50%;
+  }
+
+  .profile-card{
+    border:1px solid var(--line-soft);
+    padding:28px 30px;
+  }
+  .profile-card h3{
+    font-size:0.78rem; font-weight:700; text-transform:uppercase; letter-spacing:0.1em;
+    color:var(--blue-500); margin-bottom:20px;
+  }
+  .profile-row{
+    display:flex; justify-content:space-between; gap:16px;
+    padding:11px 0;
+    border-bottom:1px solid var(--line-soft);
+    font-size:0.9rem;
+  }
+  .profile-row:last-child{border-bottom:none;}
+  .profile-row dt{color:var(--ink-soft);}
+  .profile-row dd{font-weight:600; text-align:right;}
+
+  /* ---------- Education timeline ---------- */
+  .edu-table{width:100%; border-collapse:collapse;}
+  .edu-table th{
+    text-align:left;
+    font-size:0.72rem; text-transform:uppercase; letter-spacing:0.08em;
+    color:var(--ink-soft); font-weight:700;
+    padding:0 18px 14px;
+    border-bottom:2px solid var(--navy-900);
+  }
+  .edu-table td{
+    padding:20px 18px;
+    border-bottom:1px solid var(--line-soft);
+    font-size:0.94rem;
+    vertical-align:top;
+  }
+  .edu-table tr:last-child td{border-bottom:2px solid var(--navy-900);}
+  .edu-table td.course{font-weight:700; color:var(--navy-900);}
+  .edu-table td.pct{font-weight:700; color:var(--blue-500); white-space:nowrap;}
+  .edu-table th:last-child, .edu-table td:last-child{text-align:right;}
+
+  /* ---------- Project ---------- */
+  .project-card{
+    position:relative;
+    background:var(--navy-900);
+    color:var(--white);
+    padding:52px;
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:48px;
+    overflow:hidden;
+  }
+  .project-card::before{
+    content:'';
+    position:absolute; top:0; right:0; width:220px; height:220px;
+    background:radial-gradient(circle at top right, rgba(127,180,232,0.16), transparent 70%);
+  }
+  .project-tag{
+    font-size:0.72rem; font-weight:700; text-transform:uppercase; letter-spacing:0.1em;
+    color:var(--blue-300); margin-bottom:16px; display:block;
+  }
+  .project-card h3{font-size:1.7rem; font-weight:800; margin-bottom:18px; letter-spacing:-0.01em;}
+  .project-card p{color:rgba(255,255,255,0.72); font-size:0.96rem; line-height:1.75;}
+  .project-facts{display:flex; flex-direction:column; gap:18px; align-self:center;}
+  .project-fact{
+    display:flex; gap:14px; align-items:flex-start;
+    padding:16px 18px;
+    border:1px solid var(--line);
+    font-size:0.88rem;
+    color:rgba(255,255,255,0.78);
+  }
+  .project-fact b{display:block; color:var(--white); font-size:0.82rem; margin-bottom:4px;}
+
+  /* ---------- Achievements ---------- */
+  .achieve-grid{
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:1px;
+    background:var(--line-soft);
+    border:1px solid var(--line-soft);
+  }
+  .achieve-col{background:var(--white); padding:36px 40px;}
+  .achieve-col h4{
+    font-size:0.78rem; font-weight:700; text-transform:uppercase; letter-spacing:0.08em;
+    color:var(--blue-500); margin-bottom:22px;
+  }
+  .achieve-item{
+    display:flex; justify-content:space-between; gap:16px;
+    padding:14px 0;
+    border-bottom:1px solid var(--line-soft);
+  }
+  .achieve-item:last-child{border-bottom:none;}
+  .achieve-item p{font-size:0.92rem; font-weight:600; color:var(--navy-900);}
+  .achieve-item span{font-size:0.82rem; color:var(--ink-soft);}
+  .badge{
+    display:inline-block; margin-top:6px;
+    font-size:0.68rem; font-weight:700; letter-spacing:0.04em;
+    padding:3px 9px;
+    background:var(--navy-900); color:var(--blue-300);
+    white-space:nowrap; height:fit-content;
+  }
+
+  /* ---------- Certifications ---------- */
+  .cert-grid{
+    display:grid;
+    grid-template-columns:repeat(4,1fr);
+    gap:1px;
+    background:var(--line-soft);
+    border:1px solid var(--line-soft);
+  }
+  .cert-card{background:var(--white); padding:30px 26px; }
+  .cert-card h4{
+    font-size:0.7rem; font-weight:700; text-transform:uppercase; letter-spacing:0.07em;
+    color:var(--blue-500); margin-bottom:16px;
+  }
+  .cert-card ul li{
+    font-size:0.88rem; color:var(--ink); padding:8px 0; border-bottom:1px solid var(--line-soft);
+  }
+  .cert-card ul li:last-child{border-bottom:none;}
+
+  /* ---------- Skills / languages / hobbies ---------- */
+  .tags-block{margin-bottom:40px;}
+  .tags-block:last-child{margin-bottom:0;}
+  .tags-block h4{
+    font-size:0.78rem; font-weight:700; text-transform:uppercase; letter-spacing:0.08em;
+    color:var(--blue-500); margin-bottom:16px;
+  }
+  .tags{display:flex; flex-wrap:wrap; gap:10px;}
+  .tag{
+    font-size:0.86rem; font-weight:600;
+    padding:9px 16px;
+    border:1px solid var(--line-soft);
+    color:var(--navy-900);
+  }
+
+  /* ---------- References ---------- */
+  .ref-grid{display:grid; grid-template-columns:repeat(3,1fr); gap:24px;}
+  .ref-card{border:1px solid var(--line-soft); padding:24px;}
+  .ref-card p.name{font-weight:700; color:var(--navy-900); font-size:0.98rem;}
+  .ref-card p.role{color:var(--ink-soft); font-size:0.86rem; margin-top:4px;}
+
+  /* ---------- Contact / footer ---------- */
+  footer{
+    background:var(--navy-950);
+    color:var(--white);
+    padding:100px 0 40px;
+    position:relative;
+    overflow:hidden;
+  }
+  .contact-inner{position:relative; z-index:2; text-align:center;}
+  .contact-inner .section-num{color:var(--blue-300);}
+  .contact-inner h2{
+    font-size:clamp(1.9rem,4vw,3rem);
+    font-weight:800;
+    letter-spacing:-0.02em;
+    max-width:680px;
+    margin:18px auto 20px;
+  }
+  .contact-inner p.sub{
+    color:rgba(255,255,255,0.6);
+    max-width:520px;
+    margin:0 auto 44px;
+    font-size:1rem;
+  }
+  .contact-actions{
+    display:flex; justify-content:center; flex-wrap:wrap; gap:16px;
+    margin-bottom:76px;
+  }
+  .contact-grid{
+    display:grid;
+    grid-template-columns:repeat(3,1fr);
+    gap:1px;
+    background:var(--line);
+    border:1px solid var(--line);
+    margin-bottom:60px;
+  }
+  .contact-cell{
+    background:var(--navy-950);
+    padding:26px 24px;
+    text-align:left;
+    display:flex; gap:14px; align-items:center;
+    transition:background .2s ease;
+  }
+  .contact-cell:hover{background:var(--navy-900);}
+  .contact-icon{
+    width:38px; height:38px; flex-shrink:0;
+    display:flex; align-items:center; justify-content:center;
+    border:1px solid var(--line);
+    color:var(--blue-300);
+  }
+  .contact-icon svg{width:18px; height:18px;}
+  .contact-cell b{display:block; font-size:0.72rem; text-transform:uppercase; letter-spacing:0.08em; color:rgba(255,255,255,0.5); font-weight:700;}
+  .contact-cell span{font-size:0.92rem; font-weight:600; color:var(--white);}
+  .foot-bottom{
+    display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:12px;
+    padding-top:30px; border-top:1px solid var(--line);
+    font-size:0.8rem; color:rgba(255,255,255,0.4);
+  }
+
+  /* ---------- Reveal on scroll ---------- */
+  .reveal{opacity:0; transform:translateY(18px); transition:opacity .7s ease, transform .7s ease;}
+  .reveal.in{opacity:1; transform:translateY(0);}
+
+  /* ---------- Responsive ---------- */
+  @media (max-width:900px){
+    .about-grid{grid-template-columns:1fr; gap:44px;}
+    .project-card{grid-template-columns:1fr; padding:36px 28px;}
+    .achieve-grid{grid-template-columns:1fr;}
+    .cert-grid{grid-template-columns:repeat(2,1fr);}
+    .contact-grid{grid-template-columns:1fr;}
+    .ref-grid{grid-template-columns:1fr;}
+  }
+  @media (max-width:720px){
+    nav.links{
+      position:absolute; top:100%; left:0; right:0;
+      flex-direction:column; gap:0;
+      background:var(--navy-950);
+      border-bottom:1px solid var(--line);
+      max-height:0; overflow:hidden;
+      transition:max-height .3s ease;
+    }
+    nav.links.open{max-height:320px;}
+    nav.links a{padding:16px 32px; border-top:1px solid var(--line); width:100%;}
+    .nav-toggle{display:block;}
+    .wrap{padding:0 22px;}
+    .hero{padding:70px 0 76px;}
+    section{padding:68px 0;}
+    .cert-grid{grid-template-columns:1fr;}
+    .edu-table{display:block; overflow-x:auto;}
+  }
+</style>
+</head>
+<body>
+
+<header class="nav">
+  <div class="nav-inner">
+    <a href="#top" class="brand"><span class="brand-mark"></span>S. SANJAY</div>
+    <nav class="links" id="navLinks">
+      <a href="#about">About</a>
+      <a href="#education">Education</a>
+      <a href="#project">Project</a>
+      <a href="#achievements">Achievements</a>
+      <a href="#certifications">Certifications</a>
+      <a href="#contact">Contact</a>
+    </nav>
+    <button class="nav-toggle" id="navToggle" aria-label="Toggle menu"><span></span><span></span><span></span></button>
+  </div>
+</header>
+
+<section class="hero" id="top">
+  <div class="circuit-bg" aria-hidden="true">
+    <svg viewBox="0 0 1200 700" preserveAspectRatio="xMidYMid slice">
+      <path class="trace" d="M0 120 H240 V60 H520 V180 H760" />
+      <path class="trace-dim" d="M1200 200 H900 V320 H620 V240" />
+      <path class="trace" d="M60 600 H320 V500 H600 V620 H900" />
+      <path class="trace-dim" d="M1200 520 H980 V420 H1100" />
+      <path class="trace-dim" d="M180 0 V90 H80 V220" />
+      <circle class="node" cx="240" cy="120" r="4"/>
+      <circle class="node" cx="520" cy="60" r="4"/>
+      <circle class="node" cx="760" cy="180" r="4"/>
+      <circle class="node" cx="900" cy="200" r="4"/>
+      <circle class="node" cx="620" cy="320" r="4"/>
+      <circle class="node" cx="320" cy="600" r="4"/>
+      <circle class="node" cx="600" cy="500" r="4"/>
+      <circle class="node" cx="900" cy="620" r="4"/>
+      <circle class="node" cx="980" cy="520" r="4"/>
+      <circle class="node" cx="80" cy="90" r="4"/>
+    </svg>
+  </div>
+  <div class="wrap hero-inner">
+    <span class="eyebrow">Electronics &amp; Communication Engineering</span>
+    <h1>S. Sanjay builds systems<br>that sense, control &amp; <span>connect</span>.</h1>
+    <p class="hero-role">Final-year ECE student focused on embedded systems and IoT — from sensor-driven storage automation to Raspberry Pi &amp; ESP32 based applications.</p>
+    <p class="hero-desc">Looking to secure an entry-level role where I can apply my knowledge of Electronics and Communication Engineering, sharpen my technical and problem-solving skills, and contribute to the growth of the organisation while building a strong career.</p>
+    <div class="hero-actions">
+      <a class="btn btn-primary" id="downloadBtn" href="Sanjay_Resume.pdf" download="S_Sanjay_Resume.pdf">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3v12"/><path d="M7 10l5 5 5-5"/><path d="M5 21h14"/></svg>
+        Download Resume
+      </a>
+      <a class="btn btn-outline" href="mailto:s.sanjay182006@gmail.com">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="5" width="18" height="14" rx="1"/><path d="M3 7l9 6 9-6"/></svg>
+        Email Me
+      </a>
+      <a class="btn btn-outline" href="https://wa.me/919789592866" target="_blank" rel="noopener">
+        <svg viewBox="0 0 24 24" fill="currentColor"><path d="M17.47 14.38c-.29-.15-1.7-.84-1.97-.93-.26-.1-.46-.15-.65.15-.2.29-.75.93-.92 1.12-.17.2-.34.22-.63.08-.29-.15-1.22-.45-2.32-1.43-.86-.76-1.44-1.71-1.6-2-.17-.29-.02-.45.13-.6.13-.13.29-.34.44-.51.15-.17.2-.29.29-.48.1-.2.05-.37-.02-.51-.08-.15-.65-1.58-.9-2.16-.24-.58-.48-.5-.65-.5h-.56c-.2 0-.51.07-.78.37-.26.29-1.02.99-1.02 2.42s1.04 2.81 1.19 3c.15.2 2.05 3.13 4.96 4.39.69.3 1.23.48 1.65.61.7.22 1.33.19 1.83.12.56-.08 1.7-.7 1.94-1.37.24-.68.24-1.26.17-1.38-.07-.12-.26-.2-.55-.34z"/><path d="M12 2a10 10 0 0 0-8.6 15.1L2 22l4.99-1.36A10 10 0 1 0 12 2z"/></svg>
+        WhatsApp
+      </a>
+    </div>
+    <div class="hero-meta">
+      <div><strong>Karivalam Vandanallur</strong>Tenkasi District, Tamil Nadu</div>
+      <div><strong>7.50 CGPA</strong>B.E. Electronics &amp; Comm. Engg — 2027</div>
+      <div><strong>3+</strong>Certifications in embedded systems &amp; IoT</div>
+      <div><strong>2</strong>1st-place event wins</div>
+    </div>
+  </div>
+</section>
+
+<section id="about">
+  <div class="wrap">
+    <div class="section-head reveal"><span class="section-num">01</span><h2>About</h2></div>
+    <div class="about-grid">
+      <div class="about-text reveal">
+        <p>I'm an Electronics and Communication Engineering student at Narayanaguru College of Engineering, currently completing my final year. My interest lies in embedded systems and IoT — building hardware-software solutions that solve everyday problems, from automated food-storage environments to Raspberry Pi and ESP32 based applications.</p>
+        <p>I enjoy taking a project from a working prototype to a fully documented, presentable system, and I actively look for technical events, quizzes and workshops that push my practical skills further.</p>
+        <ul class="trait-list">
+          <li>Creative and logical</li>
+          <li>Keen observer and good at team work</li>
+          <li>Enthusiastic in learning new technologies</li>
+          <li>Diligent and innovative</li>
+        </ul>
+      </div>
+      <div class="profile-card reveal">
+        <h3>Profile</h3>
+        <dl>
+          <div class="profile-row"><dt>Gender</dt><dd>Male</dd></div>
+          <div class="profile-row"><dt>Date of Birth</dt><dd>18 February</dd></div>
+          <div class="profile-row"><dt>Nationality</dt><dd>Indian</dd></div>
+          <div class="profile-row"><dt>Marital Status</dt><dd>Single</dd></div>
+          <div class="profile-row"><dt>Languages</dt><dd>Tamil, English</dd></div>
+          <div class="profile-row"><dt>Location</dt><dd>Tenkasi, Tamil Nadu</dd></div>
+        </dl>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="alt" id="education">
+  <div class="wrap">
+    <div class="section-head reveal"><span class="section-num">02</span><h2>Education</h2></div>
+    <table class="edu-table reveal">
+      <thead>
+        <tr><th>Course</th><th>Institute</th><th>Board / University</th><th>Year</th><th>Score</th></tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td class="course">B.E. Electronics &amp; Communication Engg.</td>
+          <td>Narayanaguru College of Engineering</td>
+          <td>Anna University</td>
+          <td>2027</td>
+          <td class="pct">7.50 CGPA</td>
+        </tr>
+        <tr>
+          <td class="course">HSC</td>
+          <td>AMC Government Higher Secondary School, Karivalam Vandanallur</td>
+          <td>State Board of Tamil Nadu</td>
+          <td>2023</td>
+          <td class="pct">60%</td>
+        </tr>
+        <tr>
+          <td class="course">SSLC</td>
+          <td>AMC Government Higher Secondary School, Karivalam Vandanallur</td>
+          <td>State Board of Tamil Nadu</td>
+          <td>2021</td>
+          <td class="pct">All Pass</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</section>
+
+<section id="project">
+  <div class="wrap">
+    <div class="section-head reveal"><span class="section-num">03</span><h2>Featured Project</h2></div>
+    <div class="project-card reveal">
+      <div>
+        <span class="project-tag">B.E. Mini Project</span>
+        <h3>Dry Bites — Automatic Temperature Controlled Food Crispiness System</h3>
+        <p>An intelligent food storage system designed to maintain the crispiness and quality of dry snacks by automatically controlling temperature and humidity inside the storage chamber. Snacks such as chips, biscuits, mixture and crackers lose their crispiness when they absorb moisture from the surrounding air — this project builds an ideal, self-regulating storage environment to prevent that.</p>
+      </div>
+      <div class="project-facts">
+        <div class="project-fact"><div><b>Problem</b>Moisture absorption degrades snack crispiness over time.</div></div>
+        <div class="project-fact"><div><b>Approach</b>Automatic temperature &amp; humidity control inside a dedicated storage chamber.</div></div>
+        <div class="project-fact"><div><b>Recognition</b>Presented at Loyola Institute of Technology and Science — 1st place.</div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="alt" id="achievements">
+  <div class="wrap">
+    <div class="section-head reveal"><span class="section-num">04</span><h2>Achievements</h2></div>
+    <div class="achieve-grid reveal">
+      <div class="achieve-col">
+        <h4>Paper Presentations</h4>
+        <div class="achieve-item">
+          <p>Dry Bites<br><span>Loyola Institute of Technology and Science (outer college)</span></p>
+          <span class="badge">1st Place</span>
+        </div>
+        <div class="achieve-item">
+          <p>Solar &amp; Wind Powered Smart Irrigation System<br><span>Bethlahem Institute of Engineering (outer college)</span></p>
+        </div>
+        <div class="achieve-item">
+          <p>Automated Street Light System with Energy Efficiency<br><span>Inner college</span></p>
+        </div>
+      </div>
+      <div class="achieve-col">
+        <h4>Quizzes &amp; Participation</h4>
+        <div class="achieve-item">
+          <p>Technical Quiz<br><span>Narayanaguru College of Engineering (inner college)</span></p>
+          <span class="badge">1st Place</span>
+        </div>
+        <div class="achieve-item">
+          <p>Technical Quiz<br><span>Bethlahem Institute of Engineering (outer college)</span></p>
+          <span class="badge">2nd Place</span>
+        </div>
+        <div class="achieve-item">
+          <p>Circuit Debugging — Participation<br><span>Bethlahem Institute of Engineering (outer college)</span></p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="certifications">
+  <div class="wrap">
+    <div class="section-head reveal"><span class="section-num">05</span><h2>Certifications &amp; Training</h2></div>
+    <div class="cert-grid reveal">
+      <div class="cert-card">
+        <h4>Workshops</h4>
+        <ul>
+          <li>One-day workshop on MATLAB</li>
+          <li>Hands-on training workshop in Computer Hardware</li>
+        </ul>
+      </div>
+      <div class="cert-card">
+        <h4>Value-Added Courses</h4>
+        <ul>
+          <li>Artificial Intelligence &amp; Machine Learning using Raspberry Pi</li>
+          <li>Embedded C</li>
+        </ul>
+      </div>
+      <div class="cert-card">
+        <h4>Naan Mudhalvan</h4>
+        <ul>
+          <li>Embedded Systems for IoT Applications using Raspberry Pi</li>
+          <li>IoT Application using ESP32</li>
+        </ul>
+      </div>
+      <div class="cert-card">
+        <h4>Internships</h4>
+        <ul>
+          <li>Embedded Systems — 30 days, Trios Technologies Pvt. Ltd.</li>
+          <li>Embedded C &amp; Microcontroller Programming (Virtual) — 15 days, Ingage Technologies Pvt. Ltd.</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="alt" id="skills">
+  <div class="wrap">
+    <div class="section-head reveal"><span class="section-num">06</span><h2>Skills &amp; Interests</h2></div>
+    <div class="reveal">
+      <div class="tags-block">
+        <h4>Technical Focus</h4>
+        <div class="tags">
+          <span class="tag">Embedded Systems</span>
+          <span class="tag">Embedded C</span>
+          <span class="tag">IoT (ESP32)</span>
+          <span class="tag">Raspberry Pi</span>
+          <span class="tag">MATLAB</span>
+          <span class="tag">Computer Hardware</span>
+          <span class="tag">AI &amp; Machine Learning</span>
+          <span class="tag">Circuit Debugging</span>
+        </div>
+      </div>
+      <div class="tags-block">
+        <h4>Languages Known</h4>
+        <div class="tags">
+          <span class="tag">Tamil</span>
+          <span class="tag">English</span>
+        </div>
+      </div>
+      <div class="tags-block">
+        <h4>Hobbies</h4>
+        <div class="tags">
+          <span class="tag">Photo Editing</span>
+          <span class="tag">Video Editing</span>
+          <span class="tag">Pencil Drawing</span>
+          <span class="tag">Building Mini Projects</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="references">
+  <div class="wrap">
+    <div class="section-head reveal"><span class="section-num">07</span><h2>References</h2></div>
+    <p class="section-intro reveal">Available on request — contact details can be shared directly.</p>
+    <div class="ref-grid reveal">
+      <div class="ref-card">
+        <p class="name">Mr. Murugan</p>
+        <p class="role">Tamil Teacher — School Reference</p>
+      </div>
+      <div class="ref-card">
+        <p class="name">Mr. Vasantha Kumar</p>
+        <p class="role">Maths Teacher — School Reference</p>
+      </div>
+      <div class="ref-card">
+        <p class="name">Mrs. Tenmozhi</p>
+        <p class="role">HOD, ECE Department — College Reference</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer id="contact">
+  <div class="circuit-bg" aria-hidden="true">
+    <svg viewBox="0 0 1200 700" preserveAspectRatio="xMidYMid slice">
+      <path class="trace-dim" d="M0 500 H260 V420 H520 V560" />
+      <path class="trace-dim" d="M1200 100 H940 V220 H700" />
+      <circle class="node" cx="260" cy="500" r="4"/>
+      <circle class="node" cx="520" cy="420" r="4"/>
+      <circle class="node" cx="940" cy="100" r="4"/>
+      <circle class="node" cx="700" cy="220" r="4"/>
+    </svg>
+  </div>
+  <div class="wrap contact-inner">
+    <span class="section-num">08 — Contact</span>
+    <h2>Let's build something reliable together.</h2>
+    <p class="sub">Open to entry-level roles and internships in electronics, embedded systems and IoT. Reach out directly — I reply fast.</p>
+    <div class="contact-actions">
+      <a class="btn btn-primary" href="Sanjay_Resume.pdf" download="S_Sanjay_Resume.pdf">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3v12"/><path d="M7 10l5 5 5-5"/><path d="M5 21h14"/></svg>
+        Download Resume
+      </a>
+      <a class="btn btn-outline" href="mailto:s.sanjay182006@gmail.com">Email Me</a>
+      <a class="btn btn-outline" href="https://wa.me/919789592866" target="_blank" rel="noopener">Chat on WhatsApp</a>
+    </div>
+    <div class="contact-grid">
+      <a class="contact-cell" href="mailto:s.sanjay182006@gmail.com">
+        <span class="contact-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="5" width="18" height="14" rx="1"/><path d="M3 7l9 6 9-6"/></svg></span>
+        <span><b>Email</b><span>s.sanjay182006@gmail.com</span></span>
+      </a>
+      <a class="contact-cell" href="https://wa.me/919789592866" target="_blank" rel="noopener">
+        <span class="contact-icon"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M17.47 14.38c-.29-.15-1.7-.84-1.97-.93-.26-.1-.46-.15-.65.15-.2.29-.75.93-.92 1.12-.17.2-.34.22-.63.08-.29-.15-1.22-.45-2.32-1.43-.86-.76-1.44-1.71-1.6-2-.17-.29-.02-.45.13-.6.13-.13.29-.34.44-.51.15-.17.2-.29.29-.48.1-.2.05-.37-.02-.51-.08-.15-.65-1.58-.9-2.16-.24-.58-.48-.5-.65-.5h-.56c-.2 0-.51.07-.78.37-.26.29-1.02.99-1.02 2.42s1.04 2.81 1.19 3c.15.2 2.05 3.13 4.96 4.39.69.3 1.23.48 1.65.61.7.22 1.33.19 1.83.12.56-.08 1.7-.7 1.94-1.37.24-.68.24-1.26.17-1.38-.07-.12-.26-.2-.55-.34z"/><path d="M12 2a10 10 0 0 0-8.6 15.1L2 22l4.99-1.36A10 10 0 1 0 12 2z"/></svg></span>
+        <span><b>WhatsApp</b><span>+91 97895 92866</span></span>
+      </a>
+      <a class="contact-cell" href="tel:+919655578931">
+        <span class="contact-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/></svg></span>
+        <span><b>Phone</b><span>+91 96555 78931</span></span>
+      </a>
+    </div>
+    <div class="foot-bottom">
+      <span>© 2026 S. Sanjay. Built with care.</span>
+      <span>Karivalam Vandanallur, Tenkasi, Tamil Nadu</span>
+    </div>
+  </div>
+</footer>
+
+<script>
+  // mobile nav toggle
+  const navToggle = document.getElementById('navToggle');
+  const navLinks = document.getElementById('navLinks');
+  navToggle.addEventListener('click', () => {
+    navLinks.classList.toggle('open');
+  });
+  navLinks.querySelectorAll('a').forEach(a => a.addEventListener('click', () => navLinks.classList.remove('open')));
+
+  // scroll reveal
+  const revealEls = document.querySelectorAll('.reveal');
+  const io = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('in');
+        io.unobserve(entry.target);
+      }
+    });
+  }, { threshold: 0.12 });
+  revealEls.forEach(el => io.observe(el));
+</script>
+</body>
+</html>
